@@ -2,8 +2,31 @@ from htmlnode import HtmlNode
 from textnode import TextNode
 from leafnode import LeafNode
 from parentnode import ParentNode
-from utils import textnode_to_htmlnode
+from utils import textnode_to_htmlnode, split_nodes_delimeter, extract_markdown_images, extract_markdown_links
 import unittest
+
+class TestMdlinksnimages(unittest.TestCase):
+    def test_extract_images(self):
+        text = "This is text with an ![image](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png) and [another](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dfsdkjfd.png)"
+        out = extract_markdown_images(text)
+        self.assertEqual(out, [("image", "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png")])
+class TestSplitNodesDelim(unittest.TestCase):
+    def test_splitnode_delim1(self):
+        nodes = [TextNode("This is a test with a **bolded** word", "text")]
+        sn = split_nodes_delimeter(nodes, "**", "bold")
+        self.assertEqual(sn, [[TextNode("This is a test with a ", "text"), TextNode("bolded", "bold"), TextNode(" word", "text")]]) 
+    def test_splitnode_delim2(self):
+        nodes = [TextNode("This is a test with two **bold** words like **bolded**", "text")]
+        sn = split_nodes_delimeter(nodes, "**", "bold")
+        self.assertEqual(sn, [[TextNode("This is a test with two ", "text"), TextNode("bold", "bold"), TextNode(" words like ", "text"), TextNode("bolded", "bold")]])
+    def test_splitnode_delim3(self):
+        nodes = [TextNode("This is a for two or more nodes with `code` ", "text"), TextNode("More `code`", "text")]
+        sn = split_nodes_delimeter(nodes, "`", "code")
+        self.assertEqual(sn, [[TextNode("This is a for two or more nodes with ", "text"), TextNode("code", "code"), TextNode(" ", "text")],[TextNode("More ", "text"), TextNode("code", "code")]])
+    def test_splitnode_delim4(self):
+        nodes = [TextNode("This is a test with two *italic* words like *italics*", "text")]
+        sn = split_nodes_delimeter(nodes, "*", "italic")
+        self.assertEqual(sn, [[TextNode("This is a test with two ", "text"), TextNode("italic", "italic"), TextNode(" words like ", "text"), TextNode("italics", "italic")]])
 
 class TestTexttoHtml(unittest.TestCase):
     def test_texttohtml_text(self):
