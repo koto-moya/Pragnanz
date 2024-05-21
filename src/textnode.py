@@ -1,5 +1,3 @@
-# Should contain a class called TextNode
-
 class TextNode():
     def __init__(self, text, text_type: str, url=None):
         self.text = text

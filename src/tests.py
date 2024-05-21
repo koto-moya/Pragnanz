@@ -1,32 +1,84 @@
-from htmlnode import HtmlNode
-from textnode import TextNode
-from leafnode import LeafNode
-from parentnode import ParentNode
-from utils import textnode_to_htmlnode, split_nodes_delimeter, extract_markdown_images, extract_markdown_links
+from src.htmlnode import HtmlNode
+from src.textnode import TextNode
+from src.leafnode import LeafNode
+from src.parentnode import ParentNode
+from src.utils import textnode_to_htmlnode, split_nodes_delimeter, text_to_textnodes, markdown_to_block, block_to_block_type
 import unittest
 
-class TestMdlinksnimages(unittest.TestCase):
-    def test_extract_images(self):
-        text = "This is text with an ![image](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png) and [another](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dfsdkjfd.png)"
-        out = extract_markdown_images(text)
-        self.assertEqual(out, [("image", "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png")])
+class TestBlockToBlockType(unittest.TestCase):
+    def test_heading(self):
+        block = "### test"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "heading")
+
+    def test_code(self):
+        block = "``` code # test ```"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "code")
+
+    def test_quote(self):
+        block = ">test\n>quote\n>line"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "quote")
+    
+    def test_unordered_list(self):
+        block = "* this\n* is\n- a\n* test"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "unordered list")
+
+    def test_ordered_list(self):
+        block = "1. this\n2. is\n3. a\n4. test"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "ordered list")
+
+    def test_paragraph1(self):
+        block = "1. test\nB. lines"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "paragraph")
+
+    def test_paragraph2(self):
+        block = "##test"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "paragraph")
+
+    def test_paragraph3(self):
+        block = ">test\n<line"
+        block_type = block_to_block_type(block)
+        self.assertEqual(block_type, "paragraph")
+
+class TestMarkdownToBlockd(unittest.TestCase):
+    def test_markdown_to_blocks(self):
+        markdown = '''This is **text** with an *italic* word and a\n\n`code`\n*test*'''
+        block = markdown_to_block(markdown)
+        self.assertEqual(block, ["This is **text** with an *italic* word and a", "`code`\n*test*"]) 
+    def test_markdown_to_blocks2(self):
+        markdown = '''This is **text** with an *italic* word and a\n\n\n`code`\n*test*'''
+        block = markdown_to_block(markdown)
+        self.assertEqual(block, ["This is **text** with an *italic* word and a", "`code`\n*test*"])
+
+class TestTextToNode(unittest.TestCase):
+    def test_text_to_textnode(self):
+        text = "this is a text string with **bolded** words, *italics*, and some `code snippets`.  Here is an image to better explain ![image text](image.jpg).  Also, for more information follow this link: [link_title](https://www.google.com)"
+        textnode = text_to_textnodes(text)
+        self.assertEqual(textnode, [TextNode("this is a text string with ", "text", None), TextNode("bolded", "bold", None), TextNode(" words, ", "text", None), TextNode("italics", "italic", None), TextNode(", and some ", "text", None), TextNode("code snippets", "code", None), TextNode(".  Here is an image to better explain ", "text", None), TextNode("image text", "image", "image.jpg"), TextNode(".  Also, for more information follow this link: ", "text", None), TextNode("link_title", "link", "https://www.google.com")])
+
 class TestSplitNodesDelim(unittest.TestCase):
     def test_splitnode_delim1(self):
         nodes = [TextNode("This is a test with a **bolded** word", "text")]
         sn = split_nodes_delimeter(nodes, "**", "bold")
-        self.assertEqual(sn, [[TextNode("This is a test with a ", "text"), TextNode("bolded", "bold"), TextNode(" word", "text")]]) 
+        self.assertEqual(sn, [TextNode("This is a test with a ", "text"), TextNode("bolded", "bold"), TextNode(" word", "text")]) 
     def test_splitnode_delim2(self):
         nodes = [TextNode("This is a test with two **bold** words like **bolded**", "text")]
         sn = split_nodes_delimeter(nodes, "**", "bold")
-        self.assertEqual(sn, [[TextNode("This is a test with two ", "text"), TextNode("bold", "bold"), TextNode(" words like ", "text"), TextNode("bolded", "bold")]])
+        self.assertEqual(sn, [TextNode("This is a test with two ", "text"), TextNode("bold", "bold"), TextNode(" words like ", "text"), TextNode("bolded", "bold")])
     def test_splitnode_delim3(self):
         nodes = [TextNode("This is a for two or more nodes with `code` ", "text"), TextNode("More `code`", "text")]
         sn = split_nodes_delimeter(nodes, "`", "code")
-        self.assertEqual(sn, [[TextNode("This is a for two or more nodes with ", "text"), TextNode("code", "code"), TextNode(" ", "text")],[TextNode("More ", "text"), TextNode("code", "code")]])
+        self.assertEqual(sn, [TextNode("This is a for two or more nodes with ", "text"), TextNode("code", "code"), TextNode(" ", "text"),TextNode("More ", "text"), TextNode("code", "code")])
     def test_splitnode_delim4(self):
         nodes = [TextNode("This is a test with two *italic* words like *italics*", "text")]
         sn = split_nodes_delimeter(nodes, "*", "italic")
-        self.assertEqual(sn, [[TextNode("This is a test with two ", "text"), TextNode("italic", "italic"), TextNode(" words like ", "text"), TextNode("italics", "italic")]])
+        self.assertEqual(sn, [TextNode("This is a test with two ", "text"), TextNode("italic", "italic"), TextNode(" words like ", "text"), TextNode("italics", "italic")])
 
 class TestTexttoHtml(unittest.TestCase):
     def test_texttohtml_text(self):

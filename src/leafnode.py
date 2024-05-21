@@ -1,4 +1,4 @@
-from htmlnode import HtmlNode
+from src.htmlnode import HtmlNode
 
 class LeafNode(HtmlNode):
     def __init__(self, tag, value, props=None):
@@ -11,3 +11,5 @@ class LeafNode(HtmlNode):
             return str(self.value)        
         props = self.props_to_html()
         return f"<{self.tag}{props}>{self.value}</{self.tag}>"
+    def __repr__(self):
+        return f"LeafNode({self.tag}, {self.value}, {self.props})"

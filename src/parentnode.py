@@ -1,4 +1,4 @@
-from htmlnode import HtmlNode
+from src.htmlnode import HtmlNode
 
 class ParentNode(HtmlNode):
     def __init__(self, tag, children, props=None):
@@ -12,3 +12,4 @@ class ParentNode(HtmlNode):
         html_children = "".join([c.to_html() for c in self.children])
         
         return f"<{self.tag}{self.props_to_html()}>{html_children}</{self.tag}>"
+
