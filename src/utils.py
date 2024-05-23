@@ -1,5 +1,5 @@
-from src.leafnode import LeafNode
-from src.textnode import TextNode
+from leafnode import LeafNode
+from textnode import TextNode
 import re
 
 def validate_ordered_list(block):
@@ -38,11 +38,17 @@ def markdown_to_block(markdown):
 
 def text_to_textnodes(text):
     text_node = TextNode(text,"text")
-    bold = split_nodes_delimeter([text_node], "**", "bold")
-    italic = split_nodes_delimeter(bold, "*", "italic")
-    code = split_nodes_delimeter(italic, "`", "code")
-    image = split_nodes_delimeter(code,r"(!\[[^\]]*\]\([^)]*\))", "image")
-    link = split_nodes_delimeter(image, r"(?<!\!)(\[[^\]]*\]\([^)]*\))", "link")
+    print("***New Block***")
+    bold = split_nodes_delimiter([text_node], "**", "bold")
+    print(f"bolded pass:\n{bold}\nNumber of nodes: {len(bold)}\n")
+    italic = split_nodes_delimiter(bold, "*", "italic")
+    print(f"italic pass:\n{italic}\nNumber of nodes: {len(italic)}\n")
+    code = split_nodes_delimiter(italic, "`", "code")
+    print(f"code pass:\n{code}\nNumber of nodes: {len(code)}\n")
+    image = split_nodes_delimiter(code,r"(!\[[^\]]*\]\([^)]*\))", "image")
+    print(f"image pass:\n{image}\nNumber of nodes: {len(image)}\n")
+    link = split_nodes_delimiter(image, r"(?<!\!)(\[[^\]]*\]\([^)]*\))", "link")
+    print(f"link pass:\n{link}\nNumber of nodes: {len(link)}\n\n")
     return link
 
 def textnode_to_htmlnode(text_node):
@@ -106,6 +112,6 @@ def splitter(node, delim, text_type):
             text = [phr for phr in node.text.split(delim) if phr != ""]
         return [TextNode(phr, text_type) if phr in delim_match else TextNode(phr, "text") for phr in text]
 
-def split_nodes_delimeter(old_nodes, delim, text_type):
+def split_nodes_delimiter(old_nodes, delim, text_type):
     out = [splitter(node, delim, text_type) if node.text_type == "text" else [node] for node in old_nodes]
     return sum(out, [])

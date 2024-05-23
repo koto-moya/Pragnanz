@@ -1,8 +1,8 @@
-from src.htmlnode import HtmlNode
-from src.textnode import TextNode
-from src.leafnode import LeafNode
-from src.parentnode import ParentNode
-from src.utils import textnode_to_htmlnode, split_nodes_delimeter, text_to_textnodes, markdown_to_block, block_to_block_type
+from htmlnode import HtmlNode
+from textnode import TextNode
+from leafnode import LeafNode
+from parentnode import ParentNode
+from utils import textnode_to_htmlnode, split_nodes_delimiter, text_to_textnodes, markdown_to_block, block_to_block_type
 import unittest
 
 class TestBlockToBlockType(unittest.TestCase):
@@ -65,19 +65,19 @@ class TestTextToNode(unittest.TestCase):
 class TestSplitNodesDelim(unittest.TestCase):
     def test_splitnode_delim1(self):
         nodes = [TextNode("This is a test with a **bolded** word", "text")]
-        sn = split_nodes_delimeter(nodes, "**", "bold")
+        sn = split_nodes_delimiter(nodes, "**", "bold")
         self.assertEqual(sn, [TextNode("This is a test with a ", "text"), TextNode("bolded", "bold"), TextNode(" word", "text")]) 
     def test_splitnode_delim2(self):
         nodes = [TextNode("This is a test with two **bold** words like **bolded**", "text")]
-        sn = split_nodes_delimeter(nodes, "**", "bold")
+        sn = split_nodes_delimiter(nodes, "**", "bold")
         self.assertEqual(sn, [TextNode("This is a test with two ", "text"), TextNode("bold", "bold"), TextNode(" words like ", "text"), TextNode("bolded", "bold")])
     def test_splitnode_delim3(self):
         nodes = [TextNode("This is a for two or more nodes with `code` ", "text"), TextNode("More `code`", "text")]
-        sn = split_nodes_delimeter(nodes, "`", "code")
+        sn = split_nodes_delimiter(nodes, "`", "code")
         self.assertEqual(sn, [TextNode("This is a for two or more nodes with ", "text"), TextNode("code", "code"), TextNode(" ", "text"),TextNode("More ", "text"), TextNode("code", "code")])
     def test_splitnode_delim4(self):
         nodes = [TextNode("This is a test with two *italic* words like *italics*", "text")]
-        sn = split_nodes_delimeter(nodes, "*", "italic")
+        sn = split_nodes_delimiter(nodes, "*", "italic")
         self.assertEqual(sn, [TextNode("This is a test with two ", "text"), TextNode("italic", "italic"), TextNode(" words like ", "text"), TextNode("italics", "italic")])
 
 class TestTexttoHtml(unittest.TestCase):
