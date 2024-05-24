@@ -2,7 +2,7 @@ from htmlnode import HtmlNode
 from textnode import TextNode
 from leafnode import LeafNode
 from parentnode import ParentNode
-from utils import textnode_to_htmlnode, split_nodes_delimiter, text_to_textnodes, markdown_to_block, block_to_block_type
+from utils import textnode_to_htmlnode, splitter, text_to_textnodes, markdown_to_block, block_to_block_type
 import unittest
 
 class TestBlockToBlockType(unittest.TestCase):
@@ -60,24 +60,24 @@ class TestTextToNode(unittest.TestCase):
     def test_text_to_textnode(self):
         text = "this is a text string with **bolded** words, *italics*, and some `code snippets`.  Here is an image to better explain ![image text](image.jpg).  Also, for more information follow this link: [link_title](https://www.google.com)"
         textnode = text_to_textnodes(text)
-        self.assertEqual(textnode, [TextNode("this is a text string with ", "text", None), TextNode("bolded", "bold", None), TextNode(" words, ", "text", None), TextNode("italics", "italic", None), TextNode(", and some ", "text", None), TextNode("code snippets", "code", None), TextNode(".  Here is an image to better explain ", "text", None), TextNode("image text", "image", "image.jpg"), TextNode(".  Also, for more information follow this link: ", "text", None), TextNode("link_title", "link", "https://www.google.com")])
+        self.assertEqual(textnode, [TextNode("this is a text string with ", "text", None), TextNode("bolded", "bold", None), TextNode(" words, ", "text", None), TextNode("italics", "italic", None), TextNode(", and some ", "text", None), TextNode("code snippets", "code", None), TextNode(".  Here is an image to better explain ", "text", None), TextNode("![image text](image.jpg)", "image", None), TextNode(".  Also, for more information follow this link: ", "text", None), TextNode("[link_title](https://www.google.com)", "link", None)])
 
 class TestSplitNodesDelim(unittest.TestCase):
-    def test_splitnode_delim1(self):
+    def test_splitter1(self):
         nodes = [TextNode("This is a test with a **bolded** word", "text")]
-        sn = split_nodes_delimiter(nodes, "**", "bold")
+        sn = splitter(nodes, r'\*\*([^*]+)\*\*', "bold")
         self.assertEqual(sn, [TextNode("This is a test with a ", "text"), TextNode("bolded", "bold"), TextNode(" word", "text")]) 
-    def test_splitnode_delim2(self):
+    def test_splitter2(self):
         nodes = [TextNode("This is a test with two **bold** words like **bolded**", "text")]
-        sn = split_nodes_delimiter(nodes, "**", "bold")
+        sn = splitter(nodes, r'\*\*([^*]+)\*\*', "bold")
         self.assertEqual(sn, [TextNode("This is a test with two ", "text"), TextNode("bold", "bold"), TextNode(" words like ", "text"), TextNode("bolded", "bold")])
-    def test_splitnode_delim3(self):
+    def test_splitter3(self):
         nodes = [TextNode("This is a for two or more nodes with `code` ", "text"), TextNode("More `code`", "text")]
-        sn = split_nodes_delimiter(nodes, "`", "code")
+        sn = splitter(nodes, r'\`(.*?)\`', "code")
         self.assertEqual(sn, [TextNode("This is a for two or more nodes with ", "text"), TextNode("code", "code"), TextNode(" ", "text"),TextNode("More ", "text"), TextNode("code", "code")])
-    def test_splitnode_delim4(self):
+    def test_splitter4(self):
         nodes = [TextNode("This is a test with two *italic* words like *italics*", "text")]
-        sn = split_nodes_delimiter(nodes, "*", "italic")
+        sn = splitter(nodes, r'\*([^*]+)\*', "italic")
         self.assertEqual(sn, [TextNode("This is a test with two ", "text"), TextNode("italic", "italic"), TextNode(" words like ", "text"), TextNode("italics", "italic")])
 
 class TestTexttoHtml(unittest.TestCase):

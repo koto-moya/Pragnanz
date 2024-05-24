@@ -89,7 +89,6 @@ def text_to_textnodes(input_block, block_type=None) -> list:
     if block_type == "code":
         return [TextNode(input_block, "text")]
     else:
-
         textnode = [TextNode(input_block, "text")]
         # Bold pass
         out = splitter(textnode,r'\*\*([^*]+)\*\*',"bold")

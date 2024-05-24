@@ -7,7 +7,8 @@ class LeafNode(HtmlNode):
 
     def to_html(self):
         if self.tag == "img":
-            return f"<{self.tag} {self.props}>"
+            props = self.props_to_html()
+            return f"<{self.tag}{props}>"
         else:
             if not self.value:
                 raise ValueError("No values in leafnode")
@@ -15,7 +16,7 @@ class LeafNode(HtmlNode):
                 return str(self.value)        
             if self.props:
                 props = self.props_to_html()
-                return f"<{self.tag} {self.props}>{self.value}</{self.tag}>"
+                return f"<{self.tag}{props}>{self.value}</{self.tag}>"
             else:
                 return f"<{self.tag}>{self.value}</{self.tag}>"
     def __repr__(self):

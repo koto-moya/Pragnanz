@@ -2,22 +2,25 @@ from utils import markdown_to_block, block_to_block_type, block_to_nodes, textno
 from textnode import TextNode
 from parentnode import ParentNode
 from leafnode import LeafNode
-
+import re
 def markdown_to_leafnodes(markdown):
     blocks = markdown_to_block(markdown)
     blocked_nodes = [(block_to_nodes(block, block_to_block_type(block)), block_to_block_type(block)) for block in blocks]
     return [(block_type, [textnode_to_htmlnode(node) for node in blocks]) for blocks, block_type in blocked_nodes]
 
 def quote_to_html(leaf_group):
+    leaf_group = [LeafNode(leaf.tag,re.sub(r"> ", "", leaf.value)) for leaf in leaf_group]
     return ParentNode("blockquote", leaf_group).to_html()
 
 def list_to_html(leaf_group, list_type): 
     values = "".join([leaf.value if leaf.tag == "" else leaf.to_html() for leaf in leaf_group])
-    split = values.split("\n")
+    remove_leader = re.sub(r"^\d+\. |[-*]", "", values, flags=re.MULTILINE)
+    split = remove_leader.split("\n") 
     li_leafs = [LeafNode("li", line) for line in split]
     return ParentNode(f"{list_type}",li_leafs).to_html()
 
 def code_to_html(leaf_group):
+    leaf_group = [LeafNode(leaf.tag,re.sub(r"^```\n|```$", "", leaf.value)) for leaf in leaf_group]
     return ParentNode("pre", [ParentNode("code", leaf_group)]).to_html()
 
 def heading_to_html(leaf_group):
