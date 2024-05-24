@@ -1,7 +1,5 @@
-content/
 static/
 public/
 __pycache__/
 .err
 .res
-src/__pycache__/
