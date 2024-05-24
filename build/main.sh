@@ -1,2 +1,3 @@
+cd ..
 python src/main.py
-python server.py --dir public
+python build/server.py --dir public

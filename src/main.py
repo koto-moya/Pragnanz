@@ -50,13 +50,13 @@ def generate_pages(content_path, template, dest_path):
             generate_pages(source, template, dest)
 
 if __name__ == "__main__":
-    base = "/home/koto/build/hyde/"
-    content = f"{base}content"
-    static = f"{base}static"
-    public = f"{base}public"
-    css = f"{base}css"
-    images = f"{base}images"
-    template = f"{base}template.html"
+    base = os.getcwd().replace("/src","")
+    content = f"{base}/content"
+    static = f"{base}/static"
+    public = f"{base}/public"
+    css = f"{base}/assets/css"
+    images = f"{base}/assets/images"
+    template = f"{base}/assets/template.html"
     if os.path.exists(static):
         shutil.rmtree(static)
     os.mkdir(static)
