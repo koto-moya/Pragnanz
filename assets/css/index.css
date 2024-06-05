@@ -1,5 +1,5 @@
 body {
-    background-color: #0d1117;
+    background-color: #0d1117; /*#0d1117*/
    color: #c9d1d9;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     line-height: 1.5;
@@ -92,3 +92,50 @@ img {
     border-radius: 6px;
 }
  
+.kanizsa-triangle {
+  position: relative;
+  width: 33.75px; /* Adjust the size as needed */
+  height: 33.75px;
+}
+
+.triangle-down {
+    position: absolute;
+    top: 25%; /* Adjust as needed */
+    left: 50%; 
+    transform: translate(-50%, -25%);
+    width: 0;
+    height: 0;
+    border-left: 18.75px solid transparent;
+    border-right: 18.75px solid transparent;
+    border-top: 32.25px solid #0d1117; /* Adjust height as needed */
+    z-index: 10; /* Ensure the triangle is on top */
+}
+
+.circle {
+    position: absolute;
+    width: 15px;  /* Adjust as needed */
+    height: 15px; /* Adjust as needed */
+    border-radius: 50%;
+    background-color: white;
+    border: .5px solid #0d1117;
+    z-index: 5; /* Ensure circles are behind the triangle */
+}
+
+.circle1 {
+    top: 90%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle2 {
+    top: 5%; /* Adjust as needed */
+    left: 0%;
+    transform: translate(-50%, -50%);
+}
+
+.circle3 {
+    top: 5%; /* Adjust as needed */
+    left: 100%;
+    transform: translate(-50%, -50%);
+}
+
