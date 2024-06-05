@@ -52,7 +52,7 @@ def blocked_leafs_to_html(zipped_leafs):
             parent_nodes.append(paragraph_to_html(leaf_group))
         else:
             raise Exception("Invalid Block Type")
-    return f"<div>{"".join(parent_nodes)}</div>"
+    return f'<div>{"".join(parent_nodes)}</div>'
 
 def markdown_to_html(text):
     return blocked_leafs_to_html(markdown_to_leafnodes(text))
