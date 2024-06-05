@@ -1,5 +1,5 @@
 body {
-    background-color: #0d1117; /*#0d1117*/
+    background-color: #2d2b2b; /*#0d1117*/
    color: #c9d1d9;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     line-height: 1.5;
@@ -20,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #58a6ff;
+    color: #981118;
     margin-top: 24px;
     margin-bottom: 16px;
 }
@@ -44,7 +44,7 @@ h6 {
 }
 
 a {
-    color: #58a6ff;
+    color: #981118;
     text-decoration: none;
 }
 
@@ -107,7 +107,7 @@ img {
     height: 0;
     border-left: 18.75px solid transparent;
     border-right: 18.75px solid transparent;
-    border-top: 32.25px solid #0d1117; /* Adjust height as needed */
+    border-top: 32.25px solid #2d2b2b; /* Adjust height as needed */
     z-index: 10; /* Ensure the triangle is on top */
 }
 
@@ -117,7 +117,7 @@ img {
     height: 15px; /* Adjust as needed */
     border-radius: 50%;
     background-color: white;
-    border: .5px solid #0d1117;
+    border: .5px solid #2d2b2b;
     z-index: 5; /* Ensure circles are behind the triangle */
 }
 

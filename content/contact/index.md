@@ -1,6 +1,6 @@
 # Contact Us
 
-Email: Johnathan.D.Padilla@gmail.com
+Email: pragnanzsoftware@gmail.com
 
 Phone: +1(408)613-0298
 
