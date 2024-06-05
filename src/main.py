@@ -52,24 +52,17 @@ def generate_pages(content_path, template, dest_path):
 if __name__ == "__main__":
     base = os.getcwd().replace("/src","")
     content = f"{base}/content"
-    static = f"{base}/static"
     public = f"{base}/public"
     css = f"{base}/assets/css"
     images = f"{base}/assets/images"
     template = f"{base}/assets/template.html"
-    if os.path.exists(static):
-        shutil.rmtree(static)
-    os.mkdir(static)
-    # add images
-    copy_tree(images, static)
-    # add css
-    copy_tree(css, static)
-    generate_pages(content, template, static)
-    # write to public
-    if os.path.exists(static):
-        if os.path.exists(public):
-            shutil.rmtree(public)
+    if os.path.exists(public):
+        shutil.rmtree(public)
         os.mkdir(public)
-        copy_tree(static, public)
+    # add images
+    copy_tree(images, public)
+    # add css
+    copy_tree(css, public)
+    generate_pages(content, template, public)
 
 

@@ -3,3 +3,4 @@ public/
 __pycache__/
 .err
 .res
+build/local.sh
