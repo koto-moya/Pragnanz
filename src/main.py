@@ -59,6 +59,8 @@ if __name__ == "__main__":
     if os.path.exists(public):
         shutil.rmtree(public)
         os.mkdir(public)
+    else:
+        os.mkdir(public)
     # add images
     copy_tree(images, public)
     # add css
