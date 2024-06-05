@@ -128,13 +128,13 @@ img {
 }
 
 .circle2 {
-    top: 2.5%; /* Adjust as needed */
+    top: 0%; /* Adjust as needed */
     left: 0%;
     transform: translate(-50%, -50%);
 }
 
 .circle3 {
-    top: 2.5%; /* Adjust as needed */
+    top: 0%; /* Adjust as needed */
     left: 100%;
     transform: translate(-50%, -50%);
 }
