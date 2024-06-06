@@ -62,9 +62,12 @@ if __name__ == "__main__":
     else:
         os.mkdir(public)
     # add images
-    copy_tree(images, public)
+    if os.path.exists(images):
+        copy_tree(images, public)
     # add css
-    copy_tree(css, public)
+    if os.path.exists(css):
+        copy_tree(css, public)
+
     generate_pages(content, template, public)
 
 
