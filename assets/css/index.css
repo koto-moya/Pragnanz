@@ -117,7 +117,7 @@ img {
     height: 15px; /* Adjust as needed */
     border-radius: 50%;
     background-color: white;
-    border: .5px solid #2d2b2b;
+    border: .5px solid #2d2b2b; 
     z-index: 5; /* Ensure circles are behind the triangle */
 }
 
