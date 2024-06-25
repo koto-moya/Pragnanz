@@ -1,6 +1,7 @@
 from md_to_html import markdown_to_html
 import os
 import shutil
+
 def copy_tree(src_path, dst_path):
     for item in os.listdir(src_path):
         source = src_path+"/"+item
