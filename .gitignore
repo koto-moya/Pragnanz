@@ -4,3 +4,4 @@ __pycache__/
 .err
 .res
 build/local.sh
+src/temp.py

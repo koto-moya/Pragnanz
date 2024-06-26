@@ -5,7 +5,7 @@ from leafnode import LeafNode
 import re
 def markdown_to_leafnodes(markdown):
     blocks = markdown_to_block(markdown)
-    blocked_nodes = [(block_to_nodes(block, block_to_block_type(block)), block_to_block_type(block)) for block in blocks]
+    blocked_nodes = [block_to_nodes(block, block_to_block_type(block)) for block in blocks]
     return [(block_type, [textnode_to_htmlnode(node) for node in blocks]) for blocks, block_type in blocked_nodes]
 
 def quote_to_html(leaf_group):

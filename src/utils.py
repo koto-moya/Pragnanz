@@ -32,12 +32,12 @@ def block_to_block_type(block: str):
     else:
         return "paragraph"
 
-def markdown_to_block(markdown):
+def markdown_to_block(markdown: str) -> list:
     split = markdown.split("\n\n")
     return [phr.lstrip("\n").rstrip("\n").lstrip(" ").rstrip(" ") for phr in split if phr != ""]
 
 
-def textnode_to_htmlnode(text_node):
+def textnode_to_htmlnode(text_node) -> LeafNode:
     lu = {"text":{"args":("",text_node.text), "props":None},
             "bold":{"args":("b",text_node.text), "props":None},
             "italic":{"args":("i",text_node.text), "props":None},
@@ -84,7 +84,7 @@ def split_logic(node, split_criteria, text_type) -> list:
 def splitter(nodes: list, split_criteria, text_type) -> list:
     return sum([split_logic(node, split_criteria, text_type) for node in nodes], [])
 
-def text_to_textnodes(input_block, block_type=None) -> list:
+def text_to_textnodes(input_block: str, block_type=None) -> list:
     # block -> [textnode]
     if block_type == "code":
         return [TextNode(input_block, "text")]
@@ -114,4 +114,4 @@ def clean_image_and_link(node) -> TextNode:
 
 def block_to_nodes(input_block, block_type=None) -> list:
     nodes = text_to_textnodes(input_block, block_type)
-    return [clean_image_and_link(node) for node in nodes]
+    return ([clean_image_and_link(node) for node in nodes], block_type)
