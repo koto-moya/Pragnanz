@@ -14,8 +14,22 @@ def quote_to_html(leaf_group):
 
 def list_to_html(leaf_group, list_type): 
     values = "".join([leaf.value if leaf.tag == "" else leaf.to_html() for leaf in leaf_group])
-    remove_leader = re.sub(r"^\d+\. |[-*]", "", values, flags=re.MULTILINE)
-    split = remove_leader.split("\n") 
+    urls = {}
+    def replace_url(match):
+        placeholder = f"URL{len(urls)}"
+        urls[placeholder] = match.group(0)
+        return placeholder
+    
+    text = re.sub(r'https?://[\S]+', replace_url, values)
+    
+    # Perform replacements on the non-URL text
+    text = re.sub(r'^\d+\.\s', "", text, flags=re.MULTILINE)
+    text = re.sub(r'[-*]', "", text, flags=re.MULTILINE)
+    
+    # Restore URLs from placeholders
+    for placeholder, url in urls.items():
+        text = text.replace(placeholder, url)
+    split = text.split("\n") 
     li_leafs = [LeafNode("li", line) for line in split]
     return ParentNode(f"{list_type}",li_leafs).to_html()
 
