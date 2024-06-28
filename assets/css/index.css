@@ -153,6 +153,7 @@ footer {
     position: sticky; /* Make footer stick to the bottom */
     bottom: 0; /* Position it at the bottom */
     width: 100%; /* Ensure footer spans the full width */
-    opacity: 0.3;
+    color: #981118;
+    opacity: 1;
 }
 
