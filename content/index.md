@@ -1,6 +1,6 @@
 # Pragnanz
 
-A software company.
+a software company.
 
 [arrived to late](/blog/)
 
