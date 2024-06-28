@@ -1,4 +1,4 @@
 # arrived too late
 
-[welcome](./welcome)
+[welcome](./Welcome)
 
