@@ -1,10 +1,4 @@
-# Blog Navigator
+# arrived too late
 
-*June 5th, 2024*
-[Welcome](./Welcome)
+[welcome](./welcome)
 
-*June 25th, 2024*
-[Capital](./Capital)
-
-*June 25th, 2024*
-[Replicator](./Replicator)
