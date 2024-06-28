@@ -2,7 +2,7 @@
 
 a software company.
 
-[arrived to late](/blog/)
+[arrived too late](/blog/)
 
 [Contact Info](/contact/)
 
