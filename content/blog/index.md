@@ -2,3 +2,4 @@
 
 [welcome](./Welcome)
 
+[competence](./competence)
