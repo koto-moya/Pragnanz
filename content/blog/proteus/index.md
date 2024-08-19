@@ -1,6 +1,6 @@
 # proteus
 
-The last 6 months of my life have spent juggling a dead-end job, grokking computer science, and coming to terms with my own shortcomings.  It has been an enlightening experience to say the least.  As I have come to find out, computers are not as impenetrable as I once thought they were.  My only wish is that I had gotten started earlier.  But, regrets are for those who have excepted their demise as fact, as such, I will not dwell on it anymore. The hero heads into the unknown leaving comfort and his past behind.
+The last 6 months of my life have spent juggling a dead-end job, grokking computer science, and coming to terms with my own shortcomings.  It has been an enlightening experience to say the least.  As I have come to find out, computers are not as impenetrable as I once thought they were.  My only wish is that I had gotten started earlier.  But, regrets are for those who have accepted their demise as fact therefore I will not dwell on it anymore. The hero heads into the unknown leaving comfort and his past behind.
 
 Now that I've gotten a handle on the basics I'm ready to get started on my first big boy project.  What better place to start than vision.  A system that reifies the universe itself all within the [confines of our skull.](https://www.youtube.com/watch?v=mgumsELGgGw) A truly astonishing feat of *search* and *learning*.  
 
