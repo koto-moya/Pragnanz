@@ -1,6 +1,6 @@
 # gestalt 
 
-![reification](../../../assets/images/gestalt.png)
+
 
 > "An organized whole that is perceived as more than the sum of its parts."
 
@@ -10,4 +10,10 @@ I'm making a bet that the startup market will move away from cloud and SAAS, rec
 
 The winners of the next decade will be determined in large part by the extent to which their data architecture is under their control.  Taking a sober look at inference costs alone will show you that cloud does not work in this new paradigm.  Just look at the energy costs of a GPT query vs a Google query (I've heard the factor of 10 number most often).  It doesn't take a genius to see that energy costs in the US will not drop 10x to accommodate this anytime soon.
 
-Right now Nvidia is eating everyones lunch and then some.  No one is profitable in the AI space, except for these [guys](https://www.comma.ai/).  If you want to be caught in the crossfire, by all means, continue business as usual.  We'll be here when you need us.   
+Right now, Nvidia is eating everyones lunch and then some.  No one is profitable in the AI space, except for these [guys](https://www.comma.ai/) apparently.  If you want to be caught with your pants down, by all means, continue business as usual.  We'll be here when you need us.   
+
+![reification](../../gestalt.png)
+
+[arrived too late](/blog/)
+
+[/](/)

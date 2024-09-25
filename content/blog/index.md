@@ -6,5 +6,7 @@
 
 [proteus](./proteus)
 
+[gestalt](./gestalt)
+
 [/](/)
 
