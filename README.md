@@ -2,10 +2,6 @@
 
 This project is based off of popular static site genrators like Hugo and Jekyll.  It is not meant as a dynamic wbesite builder, rather a tool to publish blogs and other slowly changing content.  
 
-# About
-
-The code in this repo was created with guidance from a Boot.Dev course.  
-
 # Installation
 
 1. Clone the repo
