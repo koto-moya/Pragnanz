@@ -2,7 +2,7 @@
 
 
 
->Is there a better description of a cube than its construction?
+> Is there a better description of a cube than its construction?
 
 
 The delayed arrival of the 21st century caught most by surprise.  Shit, I believed what they told me too.  I thought I dodged a bullet by leaving academia early.  I saw the writing on the wall, Physics was dying and there was no saving it.  Watching my PI grovel to donors told me as much.  
