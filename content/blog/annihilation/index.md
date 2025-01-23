@@ -17,7 +17,7 @@ Any successful agent requires a model of the world that maximizes their [fitness
 
 The models we are creating today are still just portals into *our* maps.  The real breakthroughs will come when these models open portals *outside* of our maps. What will they look like?  Is it even possible? Given it is possible, will we be able to contextualize it? [Langlands](https://en.wikipedia.org/wiki/Langlands_program) tells us yes.
 
-The DLC's are coming, are you ready to play?
+The DLCs are coming, are you ready to play?
 
 ![map](../../junglemap.png)
 
