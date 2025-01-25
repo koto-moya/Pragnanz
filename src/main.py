@@ -21,6 +21,7 @@ def extract_title(markdown):
 
 def read(filepath):
     with open(filepath) as file:
+        print(filepath, file)
         return file.read()
 
 def edit_template(template, title, content):
