@@ -5,3 +5,5 @@ __pycache__/
 .res
 build/local.sh
 src/temp.py
+.DS_Store
+/content/.DS_Store

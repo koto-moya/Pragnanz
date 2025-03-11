@@ -12,7 +12,7 @@ Eventually, Max figured the more digits he gave away, the bigger the digit on hi
 
 Much to the surprise of everyone at his firm, Max was ranked 5th in the sub-territory for most digits created.  This meant he would receive a large bonus at the end of the year.  The end of the year was 119 days away.
 
-Max had an account at another firm which is where he stored his personal digits.  This was common practice at his firm.  His firm didn't deal with digits the same way the other firm did.  The magnitude of Max's digit placed him squarely in the top 1000 accounts at the firm his account was held. The digit looked like this: $1,000,000. They sent him cookies every year.  He didn't like cookies very much but kept them anyway, they didn't cost him any digits after all.
+Max had an account at another firm which is where he stored his personal digits.  This was common practice at his firm.  His firm didn't deal with digits the same way the other firm did.  The magnitude of Max's digit placed him squarely in the top 1000 accounts at the firm his account was held. The digit looked like this: $1,000,000. They sent him cookies every year.  He didn't like cookies very much but kept them anyway, they didn't cost him any digits after-all.
 
 "*They told me the world is made of small billiard balls.  Sometimes these balls were waves instead.  I'm not sure why some are waves and some are not, no matter, that's what they told me and I believe them.  The first book ever written was written near a river.  That river was good for growing corn and hemp. Cows eat corn and produce noxious fumes.  I know this because I've smelled it*"
 
