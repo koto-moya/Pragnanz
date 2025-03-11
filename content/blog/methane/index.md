@@ -28,7 +28,7 @@ He heard that people were coming after digit lenders.  They blamed them for the 
 
 "*They never told me a digit could get too big*"
 
-![map](../../bank_credit.png)
+![credit grpah](../../bank_credit.png)
 
 [arrived too late](/blog/)
 
